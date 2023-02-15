@@ -1,0 +1,19 @@
+{
+  "name": "core.typescript",
+  "version": "1.0.0",
+  "description": "Core TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yobuligo/core.typescript.git"
+  },
+  "author": "Yobuligo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yobuligo/core.typescript/issues"
+  },
+  "homepage": "https://github.com/Yobuligo/core.typescript#readme"
+}
