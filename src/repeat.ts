@@ -1,9 +1,3 @@
-function repeat(times: number, block: (index: number) => void): void;
-function repeat(from: number, to: number, block: (index: number) => void): void;
-function repeat(from: unknown, to: unknown, block?: unknown): void {
-    throw new Error("Method not implemented.");
-}
-
 // interface IRepeat {
 //   repeat(times: number, block: (index: number) => void): void;
 //   repeat(from: number, to: number, block: (index: number) => void): void;
@@ -17,14 +11,44 @@ function repeat(from: unknown, to: unknown, block?: unknown): void {
 //     }
 // }
 
-// const repeat = (times: number, block: (index: number) => void) => {
-//   for (let index = 0; index < times; index++) {
-//     block(index + 1);
-//   }
-// };
+const repeat = (times: number, block: (index: number) => void) => {
+  if (times < 0){
+
+  }
+
+  for (let index = 0; index < times; index++) {
+    block(index + 1);
+  }
+};
+
+const repeatUpTo = (
+  from: number,
+  to: number,
+  block: (index: number) => void
+) => {
+  for (let index = from; index < to + 1; index++) {
+    block(index);
+  }
+};
+
+const repeatDownTo = (
+  from: number,
+  to: number,
+  block: (index: number) => void
+) => {
+  let index = from;
+  while (index >= to) {
+    block(index);
+    index--;
+  }
+};
 
 const println = (...data: any[]) => {
   console.log(...data);
+};
+
+const newLine = () => {
+  println("");
 };
 
 const TODO = (message: string = "Not implemented exception") => {
@@ -38,5 +62,18 @@ const measureTimeMillis = (block: () => void): number => {
   return endTime.getTime() - startTime.getTime();
 };
 
+repeat(5, (index) => {
+  println(index);
+});
 
-repeat()
+newLine();
+
+repeatUpTo(5, 8, (index) => {
+  println(index);
+});
+
+newLine();
+
+repeatDownTo(8, 5, (index) => {
+  println(index);
+});

@@ -4,7 +4,7 @@
   "description": "Core TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register tests/*.ts"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/Yobuligo/core.typescript/issues"
   },
-  "homepage": "https://github.com/Yobuligo/core.typescript#readme"
+  "homepage": "https://github.com/Yobuligo/core.typescript#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1"
+  }
 }
