@@ -1,10 +1,18 @@
+import {
+  IllegalArgumentException,
+  NotImplementedException,
+} from "./Exceptions";
 import { ILazy } from "./ILazy";
+
 import { Lazy } from "./Lazy";
 import { Pair } from "./Pair";
 import { Triple } from "./Triple";
 
-export const checkNotNull = <T>(value?: T, message?: string): T | undefined => {
-  return value ?? error(message);
+export const checkNotNull = <T>(
+  value?: T,
+  message: string = "Parameter 'value' must be not null and not undefined"
+): T | undefined => {
+  return value ?? error(new IllegalArgumentException(message));
 };
 
 export const lazy = <T>(initializer: () => T): ILazy<T> => {
@@ -26,9 +34,19 @@ export const println = (...data: any[]) => {
   console.log(...data);
 };
 
-export const error = (message?: string): never => {
-  throw new Error(message);
-};
+export function error(message?: string): never;
+export function error(error: Error): never;
+export function error(first: unknown | undefined): never {
+  if (first === undefined) {
+    return error();
+  }
+
+  if (typeof first === "string") {
+    return error(first);
+  }
+
+  throw first;
+}
 
 export const pair = <A, B>(first: A, second: B): Pair<A, B> => {
   return new Pair(first, second);
@@ -37,7 +55,9 @@ export const pair = <A, B>(first: A, second: B): Pair<A, B> => {
 export const repeat = (times: number, block: (index: number) => void) => {
   if (times < 0) {
     error(
-      "Error while calling 'repeat'. Parameter 'times' must be greater or equal '0'."
+      new IllegalArgumentException(
+        "Error while calling 'repeat'. Parameter 'times' must be greater or equal '0'."
+      )
     );
   }
 
@@ -53,7 +73,9 @@ export const repeatDownTo = (
 ) => {
   if (from < to) {
     error(
-      "Error while calling 'repeatDownTo'. Parameter 'from' must be greater or equal to parameter 'to'."
+      new IllegalArgumentException(
+        "Error while calling 'repeatDownTo'. Parameter 'from' must be greater or equal to parameter 'to'."
+      )
     );
   }
 
@@ -71,7 +93,9 @@ export const repeatUpTo = (
 ) => {
   if (from > to) {
     error(
-      "Error while calling 'repeatUpTo'. Parameter 'from' must be smaller or equal to parameter 'to'."
+      new IllegalArgumentException(
+        "Error while calling 'repeatUpTo'. Parameter 'from' must be smaller or equal to parameter 'to'."
+      )
     );
   }
   for (let index = from; index < to + 1; index++) {
@@ -80,7 +104,7 @@ export const repeatUpTo = (
 };
 
 export const TODO = (message: string = "Not implemented exception"): never => {
-  return error(message);
+  return error(new NotImplementedException(message));
 };
 
 export const triple = <A, B, C>(
