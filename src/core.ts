@@ -10,7 +10,7 @@ import { Pair } from "./Pair";
 import { Triple } from "./Triple";
 
 /**
- * Checks the provided parameter {@link value} and expects it to be not null and to be not undefined.
+ * Checks and returns the provided parameter {@link value} and expects it to be not null and to be not undefined.
  *
  * If the {@link value} is null or undefined an {@link IllegalStateException} is thrown.
  * To provide an alternative text to the exception, parameter {@link message} can be passed in.
@@ -23,30 +23,22 @@ export const checkNotNull = <T>(
 };
 
 /**
- * Provides an instance of type {@link ILazy}, to lazy load a value, which is useful especially for loading very expensive only on demand.
+ * Throws an error and returns never. With parameter {@link message} a text can be passed in.
  *
- * The value is provided via function {@link initializer}.
+ * The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
+ *
+ * @example
+ * const value = getValue() ?? error("Message");
  */
-export const lazy = <T>(initializer: () => T): ILazy<T> => {
-  return new Lazy(initializer);
-};
-
-export const measureTimeMillis = (block: () => void): number => {
-  const startTime = new Date();
-  block();
-  const endTime = new Date();
-  return endTime.getTime() - startTime.getTime();
-};
-
-export const newLine = () => {
-  println("");
-};
-
-export const println = (...data: any[]) => {
-  console.log(...data);
-};
-
 export function error(message?: string): never;
+/**
+ * Throws an error and returns never. With parameter {@link error} an alternative exception type can be passed in.
+ *
+ * The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
+ *
+ * @example
+ * const value = getValue() ?? error(new IllegalStateException());
+ */
 export function error(error: Error): never;
 export function error(first: unknown | undefined): never {
   if (first === undefined) {
@@ -60,10 +52,50 @@ export function error(first: unknown | undefined): never {
   throw first;
 }
 
+/**
+ * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading very expensive values only on demand.
+ *
+ * The value is provided via function {@link initializer}.
+ */
+export const lazy = <T>(initializer: () => T): ILazy<T> => {
+  return new Lazy(initializer);
+};
+
+/**
+ * Executes the function {@link block} and returns the measured time in millis for executing it.
+ */
+export const measureTimeMillis = (block: () => void): number => {
+  const startTime = new Date();
+  block();
+  const endTime = new Date();
+  return endTime.getTime() - startTime.getTime();
+};
+
+/**
+ * Creates a new line at the console.
+ */
+export const newLine = () => {
+  println("");
+};
+
+/**
+ * Prints the given {@link data} at the console.
+ */
+export const println = (...data: any[]) => {
+  console.log(...data);
+};
+
+/**
+ * Creates and returns an instance of {@link Pair}, which keeps the two readonly values {@link first} and {@link second}.
+ */
 export const pair = <A, B>(first: A, second: B): Pair<A, B> => {
   return new Pair(first, second);
 };
 
+/**
+ * Repeats the execution of function {@link block} for the given number {@link times}.
+ * For each call of function {@link block} the current index is passed into.
+ */
 export const repeat = (times: number, block: (index: number) => void) => {
   if (times < 0) {
     throw new IllegalArgumentException(
@@ -76,6 +108,12 @@ export const repeat = (times: number, block: (index: number) => void) => {
   }
 };
 
+/**
+ * Repeats the execution of function {@link block} from number {@link from} down to number {@link to}.
+ * For each call of function {@link block} the current index is passed into.
+ *
+ * If {@link from} is smaller than {@link to} an {@link IllegalArgumentException} is thrown.
+ */
 export const repeatDownTo = (
   from: number,
   to: number,
@@ -94,6 +132,12 @@ export const repeatDownTo = (
   }
 };
 
+/**
+ * Repeats the execution of function {@link block} from number {@link from} up to number {@link to}.
+ * For each call of function {@link block} the current index is passed into.
+ *
+ * If {@link from} is greater than {@link to} an {@link IllegalArgumentException} is thrown.
+ */
 export const repeatUpTo = (
   from: number,
   to: number,
@@ -109,10 +153,16 @@ export const repeatUpTo = (
   }
 };
 
+/**
+ * Throws an {@link NotImplementedException}. With parameter {@link message} a text can be passed in.
+ */
 export const TODO = (message: string = "Not implemented exception"): never => {
-  return error(new NotImplementedException(message));
+  throw new NotImplementedException(message);
 };
 
+/**
+ * Creates and returns an instance of {@link Triple}, which keeps the three readonly values {@link first}, {@link second} and {@link third}.
+ */
 export const triple = <A, B, C>(
   first: A,
   second: B,
