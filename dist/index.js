@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Triple = exports.Pair = exports.NullPointerException = exports.NotSupportedException = exports.NotImplementedException = exports.NoSuchElementException = exports.IllegalArgumentException = exports.ClassCastException = exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.println = exports.pair = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.error = exports.checkNotNull = void 0;
+exports.Triple = exports.Pair = exports.NullPointerException = exports.NotSupportedException = exports.NotImplementedException = exports.NoSuchElementException = exports.IllegalStateException = exports.IllegalArgumentException = exports.ClassCastException = exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.println = exports.pair = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.error = exports.checkNotNull = void 0;
 var core_1 = require("./core");
 Object.defineProperty(exports, "checkNotNull", { enumerable: true, get: function () { return core_1.checkNotNull; } });
 Object.defineProperty(exports, "error", { enumerable: true, get: function () { return core_1.error; } });
@@ -17,6 +17,7 @@ Object.defineProperty(exports, "triple", { enumerable: true, get: function () { 
 var Exceptions_1 = require("./Exceptions");
 Object.defineProperty(exports, "ClassCastException", { enumerable: true, get: function () { return Exceptions_1.ClassCastException; } });
 Object.defineProperty(exports, "IllegalArgumentException", { enumerable: true, get: function () { return Exceptions_1.IllegalArgumentException; } });
+Object.defineProperty(exports, "IllegalStateException", { enumerable: true, get: function () { return Exceptions_1.IllegalStateException; } });
 Object.defineProperty(exports, "NoSuchElementException", { enumerable: true, get: function () { return Exceptions_1.NoSuchElementException; } });
 Object.defineProperty(exports, "NotImplementedException", { enumerable: true, get: function () { return Exceptions_1.NotImplementedException; } });
 Object.defineProperty(exports, "NotSupportedException", { enumerable: true, get: function () { return Exceptions_1.NotSupportedException; } });
