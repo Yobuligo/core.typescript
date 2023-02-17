@@ -1,17 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("./core");
-var Person = /** @class */ (function () {
-    function Person() {
-        this.parent = undefined;
-        this.firstname = "Stacey";
-    }
-    return Person;
-}());
-function getPerson() {
-    return undefined;
-}
-// // const person: Person | undefined = new Person();
-// checkNotNull(getPerson())?.firstname
-(0, core_1.TODO)();
+var src_1 = require("./src");
+var Exceptions_1 = require("./src/Exceptions");
+(0, src_1.error)(new Exceptions_1.NullPointerException("With message"));
 //# sourceMappingURL=Playground.js.map

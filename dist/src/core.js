@@ -35,10 +35,10 @@ var println = function () {
 exports.println = println;
 function error(first) {
     if (first === undefined) {
-        return error();
+        throw new Error();
     }
     if (typeof first === "string") {
-        return error(first);
+        throw new Error(first);
     }
     throw first;
 }

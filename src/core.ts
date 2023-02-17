@@ -11,7 +11,7 @@ import { Triple } from "./Triple";
 export const checkNotNull = <T>(
   value?: T,
   message: string = "Parameter 'value' must be not null and not undefined"
-): T | undefined => {
+): T => {
   return value ?? error(new IllegalArgumentException(message));
 };
 
@@ -38,11 +38,11 @@ export function error(message?: string): never;
 export function error(error: Error): never;
 export function error(first: unknown | undefined): never {
   if (first === undefined) {
-    return error();
+    throw new Error();
   }
 
   if (typeof first === "string") {
-    return error(first);
+    throw new Error(first);
   }
 
   throw first;
