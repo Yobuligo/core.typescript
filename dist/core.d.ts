@@ -1,0 +1,16 @@
+import { ILazy } from "./ILazy";
+import { Pair } from "./Pair";
+import { Triple } from "./Triple";
+export declare const checkNotNull: <T>(value?: T | undefined, message?: string) => T;
+export declare const lazy: <T>(initializer: () => T) => ILazy<T>;
+export declare const measureTimeMillis: (block: () => void) => number;
+export declare const newLine: () => void;
+export declare const println: (...data: any[]) => void;
+export declare function error(message?: string): never;
+export declare function error(error: Error): never;
+export declare const pair: <A, B>(first: A, second: B) => Pair<A, B>;
+export declare const repeat: (times: number, block: (index: number) => void) => void;
+export declare const repeatDownTo: (from: number, to: number, block: (index: number) => void) => void;
+export declare const repeatUpTo: (from: number, to: number, block: (index: number) => void) => void;
+export declare const TODO: (message?: string) => never;
+export declare const triple: <A, B, C>(first: A, second: B, third: C) => Triple<A, B, C>;

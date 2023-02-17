@@ -1,5 +1,6 @@
 import {
   IllegalArgumentException,
+  IllegalStateException,
   NotImplementedException,
 } from "./Exceptions";
 import { ILazy } from "./ILazy";
@@ -12,7 +13,7 @@ export const checkNotNull = <T>(
   value?: T,
   message: string = "Parameter 'value' must be not null and not undefined"
 ): T => {
-  return value ?? error(new IllegalArgumentException(message));
+  return value ?? error(new IllegalStateException(message));
 };
 
 export const lazy = <T>(initializer: () => T): ILazy<T> => {
@@ -54,10 +55,8 @@ export const pair = <A, B>(first: A, second: B): Pair<A, B> => {
 
 export const repeat = (times: number, block: (index: number) => void) => {
   if (times < 0) {
-    error(
-      new IllegalArgumentException(
-        "Error while calling 'repeat'. Parameter 'times' must be greater or equal '0'."
-      )
+    throw new IllegalArgumentException(
+      "Error while calling 'repeat'. Parameter 'times' must be greater or equal '0'."
     );
   }
 
@@ -72,10 +71,8 @@ export const repeatDownTo = (
   block: (index: number) => void
 ) => {
   if (from < to) {
-    error(
-      new IllegalArgumentException(
-        "Error while calling 'repeatDownTo'. Parameter 'from' must be greater or equal to parameter 'to'."
-      )
+    throw new IllegalArgumentException(
+      "Error while calling 'repeatDownTo'. Parameter 'from' must be greater or equal to parameter 'to'."
     );
   }
 
@@ -92,10 +89,8 @@ export const repeatUpTo = (
   block: (index: number) => void
 ) => {
   if (from > to) {
-    error(
-      new IllegalArgumentException(
-        "Error while calling 'repeatUpTo'. Parameter 'from' must be smaller or equal to parameter 'to'."
-      )
+    throw new IllegalArgumentException(
+      "Error while calling 'repeatUpTo'. Parameter 'from' must be smaller or equal to parameter 'to'."
     );
   }
   for (let index = from; index < to + 1; index++) {
