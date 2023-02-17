@@ -9,6 +9,12 @@ import { Lazy } from "./Lazy";
 import { Pair } from "./Pair";
 import { Triple } from "./Triple";
 
+/**
+ * Checks the provided parameter {@link value} and expects it to be not null and to be not undefined.
+ *
+ * If the {@link value} is null or undefined an {@link IllegalStateException} is thrown.
+ * To provide an alternative text to the exception, parameter {@link message} can be passed in.
+ */
 export const checkNotNull = <T>(
   value?: T,
   message: string = "Parameter 'value' must be not null and not undefined"
@@ -16,6 +22,11 @@ export const checkNotNull = <T>(
   return value ?? error(new IllegalStateException(message));
 };
 
+/**
+ * Provides an instance of type {@link ILazy}, to lazy load a value, which is useful especially for loading very expensive only on demand.
+ *
+ * The value is provided via function {@link initializer}.
+ */
 export const lazy = <T>(initializer: () => T): ILazy<T> => {
   return new Lazy(initializer);
 };

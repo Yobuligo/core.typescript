@@ -4,7 +4,7 @@
 export class ClassCastException extends Error {}
 
 /**
- * An exception that occurs when an argument, which is out of bounce, was provided.
+ * An exception that occurs when an argument was provided, which is out of bounce.
  *
  * E.g. if a value -1 is passed into a function, which only excepts value greater 0.
  */
