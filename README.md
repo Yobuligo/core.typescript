@@ -25,30 +25,49 @@ The library provides the following exceptions.
 ### ClassCastException
 An exception that occurs in case of an invalid class type cast.
 ```
+throw new ClassCastException();
 ```
 
 ### IllegalArgumentException
 An exception that occurs when an argument was provided, which is out of bounce.
 
 E.g. if a value -1 is passed into a function, which only excepts value greater 0.
+```
+throw new IllegalArgumentException();
+```
  
 ### IllegalStateException
 An exception that occurs when a state is or becomes inconsistent.
 
 E.g. if a value must not be undefined but undefined is set as value.
+```
+throw new IllegalStateException();
+```
 
 ### NoSuchElementException
 An exception that occurs when an expected result is not available.
 
 E.g. if a search for a specific value ends without result.
+```
+throw new NoSuchElementException();
+```
 
 ### NotImplementedException
 An exception that occurs when the implementation of a routine was not yet completed.
+```
+throw new NotImplementedException();
+```
 
 ### NotSupportedException
 An exception that occurs when a state is currently not valid.
 
 E.g. if a switch-case statement is called for a value that is currently not handled.
+```
+throw new NotSupportedException();
+```
 
 ### NullPointerException
 An exception that occurs when a value is null or undefined, which was expected to be not null or undefined.
+```
+throw new NullPointerException();
+```
