@@ -41,7 +41,7 @@ const value = getValue() ?? error(new IllegalStateException());
 ```
 
 ### lazy
-Provides an instance of type *ILazy*, to lazy load a value of type *T*, which is useful especially for loading, memory or CPU expensive values, only on demand.
+Provides an instance of type *ILazy*, to lazy load a value of type *T*, which is useful especially for loading, memory or CPU intensive values, only on demand.
 
 The value is provided via function *initializer*.
 ```
