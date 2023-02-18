@@ -19,6 +19,33 @@ The library provides the following functions.
 function checkNotNull<T>(value?: T, message: string = "Parameter 'value' must be not null and not undefined"): T
 ```
 
+### error
+Throws an error and returns never. With parameter *message* a text can be passed in.
+
+The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
+```
+function error(message?: string): never
+
+// example:
+const value = getValue() ?? error("Message");
+```
+
+Throws an error and returns never. With parameter {@link error} an alternative exception type can be passed in.
+
+The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
+```
+export function error(error: Error): never;
+
+// example:
+const value = getValue() ?? error(new IllegalStateException());
+```
+
+### repeat
+Repeats the execution of function *block* for the given number *times*. For each call of function *block* the current index is passed into.
+```
+function repeat(times: number, block: (index: number) => void): void
+```
+
 ## Exceptions
 The library provides the following exceptions.
 
