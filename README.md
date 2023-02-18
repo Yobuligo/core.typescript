@@ -22,7 +22,7 @@ function checkNotNull<T>(value?: T, message: string = "Parameter 'value' must be
 ### error
 Throws an error and returns never. With parameter *message* a text can be passed in.
 
-The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
+The function is useful to connect throwing an exception with the nullish coalescing operator, as *throw new* cannot be used with ??.
 ```
 function error(message?: string): never
 
@@ -32,7 +32,7 @@ const value = getValue() ?? error("Message");
 
 Throws an error and returns never. With parameter *error* an alternative exception type can be passed in.
 
-The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
+The function is useful to connect throwing an exception with the nullish coalescing operator, as *throw new* cannot be used with ??.
 ```
 export function error(error: Error): never;
 
@@ -41,7 +41,7 @@ const value = getValue() ?? error(new IllegalStateException());
 ```
 
 ### lazy
-Provides an instance of type *ILazy*, to lazy load a value of type *T*, which is useful especially for loading very expensive values only on demand.
+Provides an instance of type *ILazy*, to lazy load a value of type *T*, which is useful especially for loading, memory or CPU expensive values, only on demand.
 
 The value is provided via function *initializer*.
 ```
@@ -49,7 +49,7 @@ function lazy<T>(initializer: () => T): ILazy<T>
 ```
 
 ### measureTimeMillis
-Executes the function *block* and returns the measured time in millis for executing it.
+Executes the function *block* and returns the measured execution time in millis.
 ```
 function measureTimeMillis(block: () => void): number
 ```
@@ -103,7 +103,7 @@ function TODO(message: string = "Not implemented exception"): never
 ```
 
 ### triple
-Creates and returns an instance of*Triple*, which keeps the three readonly values *first*, *second* and *third*.
+Creates and returns an instance of *Triple*, which keeps the three readonly values *first*, *second* and *third*.
 ```
 function triple<A, B, C>(first: A, second: B, third: C): Triple<A, B, C>
 ```
