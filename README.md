@@ -1,5 +1,5 @@
 # core.typescript
-An API extends TypeScript by some core functions and exceptions.
+An API that extends TypeScript by simplified core functions and exceptions.
 
 ## Installation
 
