@@ -27,13 +27,13 @@ export declare function error(message?: string): never;
  */
 export declare function error(error: Error): never;
 /**
- * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading very expensive values only on demand.
+ * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
  *
  * The value is provided via function {@link initializer}.
  */
 export declare const lazy: <T>(initializer: () => T) => ILazy<T>;
 /**
- * Executes the function {@link block} and returns the measured time in millis for executing it.
+ * Executes the function {@link block} and returns the measured execution time in millis.
  */
 export declare const measureTimeMillis: (block: () => void) => number;
 /**

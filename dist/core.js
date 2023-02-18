@@ -27,7 +27,7 @@ function error(first) {
 }
 exports.error = error;
 /**
- * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading very expensive values only on demand.
+ * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
  *
  * The value is provided via function {@link initializer}.
  */
@@ -36,7 +36,7 @@ var lazy = function (initializer) {
 };
 exports.lazy = lazy;
 /**
- * Executes the function {@link block} and returns the measured time in millis for executing it.
+ * Executes the function {@link block} and returns the measured execution time in millis.
  */
 var measureTimeMillis = function (block) {
     var startTime = new Date();
