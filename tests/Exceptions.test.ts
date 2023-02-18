@@ -7,7 +7,7 @@ import {
   NotImplementedException,
   NotSupportedException,
   NullPointerException,
-} from "./../src/Exceptions";
+} from "../src/Exceptions";
 
 const testException = <T extends Error>(type: new (message: string) => T) => {
   const expectedErrorMessage = "was thrown";
@@ -24,13 +24,6 @@ const testException = <T extends Error>(type: new (message: string) => T) => {
 };
 
 describe("Exceptions", () => {
-  const expectedErrorMessage = "was thrown";
-  let actualErrorMessage: string;
-
-  beforeEach(() => {
-    actualErrorMessage = "";
-  });
-
   testException(ClassCastException);
 
   testException(IllegalArgumentException);

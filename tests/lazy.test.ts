@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { ILazy } from "../src/ILazy";
-import { lazy } from "./../src/core";
+import { lazy } from "../src/core";
 
 class Test {
   test(): void {}

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { checkNotNull } from "./../src/core";
+import { checkNotNull } from "../src/core";
 
 class Test {}
 
