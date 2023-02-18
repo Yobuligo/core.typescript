@@ -30,7 +30,7 @@ function error(message?: string): never
 const value = getValue() ?? error("Message");
 ```
 
-Throws an error and returns never. With parameter {@link error} an alternative exception type can be passed in.
+Throws an error and returns never. With parameter *error* an alternative exception type can be passed in.
 
 The function is useful to connect throwing an exception with the nullish coalescing operator, as throw new cannot be used with ??.
 ```
@@ -40,10 +40,72 @@ export function error(error: Error): never;
 const value = getValue() ?? error(new IllegalStateException());
 ```
 
+### lazy
+Provides an instance of type *ILazy*, to lazy load a value of type *T*, which is useful especially for loading very expensive values only on demand.
+
+The value is provided via function *initializer*.
+```
+function lazy<T>(initializer: () => T): ILazy<T>
+```
+
+### measureTimeMillis
+Executes the function *block* and returns the measured time in millis for executing it.
+```
+function measureTimeMillis(block: () => void): number
+```
+
+### newLine
+Creates a new line at the console.
+```
+function newLine(): void
+```
+
+### println
+Prints the given *data* at the console.
+```
+function println(...data: any[]): void
+```
+
+### pair
+Creates and returns an instance of *Pair*, which keeps the two readonly values *first* and *second*.
+```
+function pair<A, B>(first: A, second: B): Pair<A, B>
+```
+
 ### repeat
 Repeats the execution of function *block* for the given number *times*. For each call of function *block* the current index is passed into.
 ```
 function repeat(times: number, block: (index: number) => void): void
+```
+
+### repeatDownTo
+Repeats the execution of function *block* from number *from* down to number *to*.
+For each call of function *block* the current index is passed into.
+
+If *from* is smaller than *to* an *IllegalArgumentException* is thrown.
+```
+function repeatDownTo(from: number, to: number, block: (index: number) => void): void
+```
+
+### repeatUpTo
+Repeats the execution of function *block* from number *from* up to number *to*.
+For each call of function *block* the current index is passed into.
+
+If *from* is greater than *to* an *IllegalArgumentException* is thrown.
+```
+function repeatUpTo(from: number, to: number, block: (index: number) => void): void
+```
+
+### TODO
+Throws an *NotImplementedException*. With parameter *message* a text can be passed in.
+```
+function TODO(message: string = "Not implemented exception"): never
+```
+
+### triple
+Creates and returns an instance of*Triple*, which keeps the three readonly values *first*, *second* and *third*.
+```
+function triple<A, B, C>(first: A, second: B, third: C): Triple<A, B, C>
 ```
 
 ## Exceptions
