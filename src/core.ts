@@ -53,7 +53,7 @@ export function error(first: unknown | undefined): never {
 }
 
 /**
- * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading very expensive values only on demand.
+ * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
  *
  * The value is provided via function {@link initializer}.
  */
@@ -62,7 +62,7 @@ export const lazy = <T>(initializer: () => T): ILazy<T> => {
 };
 
 /**
- * Executes the function {@link block} and returns the measured time in millis for executing it.
+ * Executes the function {@link block} and returns the measured execution time in millis.
  */
 export const measureTimeMillis = (block: () => void): number => {
   const startTime = new Date();
@@ -74,14 +74,14 @@ export const measureTimeMillis = (block: () => void): number => {
 /**
  * Creates a new line at the console.
  */
-export const newLine = () => {
+export const newLine = (): void => {
   println("");
 };
 
 /**
  * Prints the given {@link data} at the console.
  */
-export const println = (...data: any[]) => {
+export const println = (...data: any[]): void => {
   console.log(...data);
 };
 
@@ -96,7 +96,7 @@ export const pair = <A, B>(first: A, second: B): Pair<A, B> => {
  * Repeats the execution of function {@link block} for the given number {@link times}.
  * For each call of function {@link block} the current index is passed into.
  */
-export const repeat = (times: number, block: (index: number) => void) => {
+export const repeat = (times: number, block: (index: number) => void): void => {
   if (times < 0) {
     throw new IllegalArgumentException(
       "Error while calling 'repeat'. Parameter 'times' must be greater or equal '0'."
@@ -118,7 +118,7 @@ export const repeatDownTo = (
   from: number,
   to: number,
   block: (index: number) => void
-) => {
+): void => {
   if (from < to) {
     throw new IllegalArgumentException(
       "Error while calling 'repeatDownTo'. Parameter 'from' must be greater or equal to parameter 'to'."
@@ -142,7 +142,7 @@ export const repeatUpTo = (
   from: number,
   to: number,
   block: (index: number) => void
-) => {
+): void => {
   if (from > to) {
     throw new IllegalArgumentException(
       "Error while calling 'repeatUpTo'. Parameter 'from' must be smaller or equal to parameter 'to'."
