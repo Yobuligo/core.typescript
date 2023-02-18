@@ -1,6 +1,8 @@
 export {
   checkNotNull,
   error,
+  ifNotNull,
+  ifNull,
   lazy,
   measureTimeMillis,
   newLine,

@@ -1,8 +1,6 @@
 import { expect } from "chai";
 import { checkNotNull } from "../src/core";
 
-class Test {}
-
 describe("checkNotNull", () => {
   it("throws an exception for null value", () => {
     expect(checkNotNull.bind(checkNotNull, null)).throw("");
@@ -19,7 +17,7 @@ describe("checkNotNull", () => {
   });
 
   it("returns value if not null and not undefined", () => {
-    const test = new Test();
+    const test = { firstname: "Stacey" };
     expect(checkNotNull(test) === test).true;
   });
 });
