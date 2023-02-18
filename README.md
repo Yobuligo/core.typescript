@@ -40,6 +40,22 @@ export function error(error: Error): never;
 const value = getValue() ?? error(new IllegalStateException());
 ```
 
+### ifNotNull
+Calls the function *block* if the given *value* is not null and not undefined.
+
+The function *block* may return a value or undefined.
+```
+function ifNotNull<T, R>(value: T, block: () => R | undefined): R | undefined
+```
+
+### ifNull
+Calls the function *block* if the given *value* is null or undefined.
+
+The function *block* may return a value or undefined.
+```
+function ifNull<T, R>(value: T, block: () => R | undefined): R | undefined
+```
+
 ### lazy
 Provides an instance of type *ILazy*, to lazy load a value of type *T*, which is useful especially for loading, memory or CPU intensive values, only on demand.
 

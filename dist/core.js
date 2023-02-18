@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.pair = exports.println = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.error = exports.checkNotNull = void 0;
+exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.pair = exports.println = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.ifNull = exports.ifNotNull = exports.error = exports.checkNotNull = void 0;
 var Exceptions_1 = require("./Exceptions");
 var Lazy_1 = require("./Lazy");
 var Pair_1 = require("./Pair");
@@ -26,6 +26,28 @@ function error(first) {
     throw first;
 }
 exports.error = error;
+/**
+ * Calls the function {@link block} if the given {@link value} is not null and not undefined.
+ *
+ * The function {@link block} may return a value or undefined.
+ */
+var ifNotNull = function (value, block) {
+    if (value !== null && value !== undefined) {
+        return block();
+    }
+};
+exports.ifNotNull = ifNotNull;
+/**
+ * Calls the function {@link block} if the given {@link value} is null or undefined.
+ *
+ * The function {@link block} may return a value or undefined.
+ */
+var ifNull = function (value, block) {
+    if (value === null || value === undefined) {
+        return block();
+    }
+};
+exports.ifNull = ifNull;
 /**
  * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
  *

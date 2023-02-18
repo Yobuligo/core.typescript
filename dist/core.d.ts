@@ -27,6 +27,18 @@ export declare function error(message?: string): never;
  */
 export declare function error(error: Error): never;
 /**
+ * Calls the function {@link block} if the given {@link value} is not null and not undefined.
+ *
+ * The function {@link block} may return a value or undefined.
+ */
+export declare const ifNotNull: <T, R>(value: T, block: () => R | undefined) => R | undefined;
+/**
+ * Calls the function {@link block} if the given {@link value} is null or undefined.
+ *
+ * The function {@link block} may return a value or undefined.
+ */
+export declare const ifNull: <T, R>(value: T, block: () => R | undefined) => R | undefined;
+/**
  * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
  *
  * The value is provided via function {@link initializer}.
