@@ -1,7 +1,7 @@
 import {
   IllegalArgumentException,
   IllegalStateException,
-  NotImplementedException
+  NotImplementedException,
 } from "./Exceptions";
 import { ILazy } from "./ILazy";
 
@@ -59,7 +59,7 @@ export function error(first: unknown | undefined): never {
  */
 export const ifNotNull = <T, R>(
   value: T,
-  block: (value: T) => R | undefined
+  block: (value: NonNullable<T>) => R | undefined
 ): R | undefined => {
   if (value !== null && value !== undefined) {
     return block(value);
