@@ -33,7 +33,7 @@ exports.error = error;
  */
 var ifNotNull = function (value, block) {
     if (value !== null && value !== undefined) {
-        return block();
+        return block(value);
     }
 };
 exports.ifNotNull = ifNotNull;
