@@ -16,6 +16,14 @@ describe("ifNotNull", () => {
     expect(called).true;
   });
 
+  it("injects the value to function block", () => {
+    ifNotNull(123, (value) => {
+      called = true;
+      expect(value).equals(123);
+    });
+    expect(called).true;
+  });
+
   it("doesn't call block if value is null", () => {
     ifNotNull(null, () => {
       called = true;
