@@ -45,7 +45,7 @@ Calls the function *block* if the given *value* is not null and not undefined.
 
 The function *block* may return a value or undefined.
 ```
-function ifNotNull<T, R>(value: T, block: (value: T) => R | undefined): R | undefined
+function ifNotNull<T, R>(value: T, block: (value: NonNullable<T>) => R | undefined): R | undefined
 ```
 
 ### ifNull
