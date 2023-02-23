@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import { error } from "../src/core";
 import { IllegalStateException } from "../src/Exceptions";
+
 describe("error", () => {
   it("throws Error with empty message", () => {
     expect(error.bind(error)).throw;

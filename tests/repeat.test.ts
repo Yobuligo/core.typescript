@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { repeat } from "./../src/core";
+
 describe("repeat", () => {
   let calledTimes: number = 0;
 

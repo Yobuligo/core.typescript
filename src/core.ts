@@ -4,7 +4,6 @@ import {
   NotImplementedException,
 } from "./Exceptions";
 import { ILazy } from "./ILazy";
-
 import { Lazy } from "./Lazy";
 import { Pair } from "./Pair";
 import { Triple } from "./Triple";
