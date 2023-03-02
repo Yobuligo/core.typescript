@@ -32,6 +32,7 @@ export const checkNotNull = <T>(
  * const value = getValue() ?? error("Message");
  */
 export function error(message?: string): never;
+
 /**
  * Throws an error and returns never. With parameter {@link error} an alternative exception type can be passed in.
  *

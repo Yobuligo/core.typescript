@@ -75,20 +75,3 @@ export class ObjectPool<T extends object> implements IObjectPool<T> {
     }
   }
 }
-
-class Test {
-  constructor(public index: number, name: string) {}
-}
-
-const testPool = new ObjectPool<Test>(3, (index) => {
-  return new Test(index, "");
-});
-
-testPool.release(testPool.acquire());
-testPool.release(testPool.acquire());
-testPool.release(testPool.acquire());
-testPool.release(testPool.acquire());
-testPool.release(testPool.acquire());
-testPool.release(testPool.acquire());
-testPool.release(testPool.acquire());
-testPool.acquire();
