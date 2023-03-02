@@ -104,11 +104,11 @@ The parameter _capacity_ defines the maximum number of instances which are creat
 function objectPool<T extends object>(capacity: number, creator: (index: number) => T): IObjectPool<T>
 ```
 
-The following example shows
+The following example shows how to
 
-1. how to initialize an object pool for a demo database connection
-2. acquire two db connections
-3. release the first db connection to be reused
+1. initialize an object pool for a demo database connection
+2. acquire two database connections
+3. release the first database connection to be reused
 
 ```
 class DBConnectionDemo {}
