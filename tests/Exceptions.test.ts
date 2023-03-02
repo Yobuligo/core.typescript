@@ -8,6 +8,7 @@ import {
   NotSupportedException,
   NullPointerException,
 } from "../src/Exceptions";
+import { InvalidOperationException } from "./../src/Exceptions";
 
 const testException = <T extends Error>(type: new (message: string) => T) => {
   const expectedErrorMessage = "was thrown";
@@ -29,6 +30,8 @@ describe("Exceptions", () => {
   testException(IllegalArgumentException);
 
   testException(IllegalStateException);
+
+  testException(InvalidOperationException);
 
   testException(NoSuchElementException);
 
