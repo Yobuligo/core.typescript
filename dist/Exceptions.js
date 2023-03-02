@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullPointerException = exports.NotSupportedException = exports.NotImplementedException = exports.NoSuchElementException = exports.IllegalStateException = exports.IllegalArgumentException = exports.ClassCastException = void 0;
+exports.NullPointerException = exports.NotSupportedException = exports.NotImplementedException = exports.NoSuchElementException = exports.InvalidOperationException = exports.IllegalStateException = exports.IllegalArgumentException = exports.ClassCastException = void 0;
 /**
  * An exception that occurs in case of an invalid class type cast.
  */
@@ -53,6 +53,19 @@ var IllegalStateException = /** @class */ (function (_super) {
     return IllegalStateException;
 }(Error));
 exports.IllegalStateException = IllegalStateException;
+/**
+ * An exception that occurs when a method is invalid for the current object state.
+ *
+ * E.g. Fetching an object from an object pool whose capacity is already exhausted.
+ */
+var InvalidOperationException = /** @class */ (function (_super) {
+    __extends(InvalidOperationException, _super);
+    function InvalidOperationException() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return InvalidOperationException;
+}(Error));
+exports.InvalidOperationException = InvalidOperationException;
 /**
  * An exception that occurs when an expected result is not available.
  *

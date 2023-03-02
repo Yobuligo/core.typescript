@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Triple = exports.Pair = exports.NullPointerException = exports.NotSupportedException = exports.NotImplementedException = exports.NoSuchElementException = exports.IllegalStateException = exports.IllegalArgumentException = exports.ClassCastException = exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.println = exports.pair = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.ifNull = exports.ifNotNull = exports.error = exports.checkNotNull = void 0;
+exports.Triple = exports.Pair = exports.NullPointerException = exports.NotSupportedException = exports.NotImplementedException = exports.NoSuchElementException = exports.InvalidOperationException = exports.IllegalStateException = exports.IllegalArgumentException = exports.ClassCastException = exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.println = exports.pair = exports.objectPool = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.ifNull = exports.ifNotNull = exports.error = exports.checkNotNull = void 0;
 var core_1 = require("./core");
 Object.defineProperty(exports, "checkNotNull", { enumerable: true, get: function () { return core_1.checkNotNull; } });
 Object.defineProperty(exports, "error", { enumerable: true, get: function () { return core_1.error; } });
@@ -9,6 +9,7 @@ Object.defineProperty(exports, "ifNull", { enumerable: true, get: function () { 
 Object.defineProperty(exports, "lazy", { enumerable: true, get: function () { return core_1.lazy; } });
 Object.defineProperty(exports, "measureTimeMillis", { enumerable: true, get: function () { return core_1.measureTimeMillis; } });
 Object.defineProperty(exports, "newLine", { enumerable: true, get: function () { return core_1.newLine; } });
+Object.defineProperty(exports, "objectPool", { enumerable: true, get: function () { return core_1.objectPool; } });
 Object.defineProperty(exports, "pair", { enumerable: true, get: function () { return core_1.pair; } });
 Object.defineProperty(exports, "println", { enumerable: true, get: function () { return core_1.println; } });
 Object.defineProperty(exports, "repeat", { enumerable: true, get: function () { return core_1.repeat; } });
@@ -20,6 +21,7 @@ var Exceptions_1 = require("./Exceptions");
 Object.defineProperty(exports, "ClassCastException", { enumerable: true, get: function () { return Exceptions_1.ClassCastException; } });
 Object.defineProperty(exports, "IllegalArgumentException", { enumerable: true, get: function () { return Exceptions_1.IllegalArgumentException; } });
 Object.defineProperty(exports, "IllegalStateException", { enumerable: true, get: function () { return Exceptions_1.IllegalStateException; } });
+Object.defineProperty(exports, "InvalidOperationException", { enumerable: true, get: function () { return Exceptions_1.InvalidOperationException; } });
 Object.defineProperty(exports, "NoSuchElementException", { enumerable: true, get: function () { return Exceptions_1.NoSuchElementException; } });
 Object.defineProperty(exports, "NotImplementedException", { enumerable: true, get: function () { return Exceptions_1.NotImplementedException; } });
 Object.defineProperty(exports, "NotSupportedException", { enumerable: true, get: function () { return Exceptions_1.NotSupportedException; } });

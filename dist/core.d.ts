@@ -1,4 +1,5 @@
 import { ILazy } from "./ILazy";
+import { IObjectPool } from "./IObjectPool";
 import { Pair } from "./Pair";
 import { Triple } from "./Triple";
 /**
@@ -40,7 +41,6 @@ export declare const ifNotNull: <T, R>(value: T, block: (value: NonNullable<T>) 
 export declare const ifNull: <T, R>(value: T, block: () => R | undefined) => R | undefined;
 /**
  * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
- *
  * The value is provided via function {@link initializer}.
  */
 export declare const lazy: <T>(initializer: () => T) => ILazy<T>;
@@ -52,6 +52,11 @@ export declare const measureTimeMillis: (block: () => void) => number;
  * Creates a new line at the console.
  */
 export declare const newLine: () => void;
+/**
+ * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*. It keeps objects which are expensive to create in memory to be reused.
+ * The parameter *{@link capacity}* defines the maximum number of instances which are created via function *{@link creator}*.
+ */
+export declare const objectPool: <T extends object>(capacity: number, creator: (index: number) => T) => IObjectPool<T>;
 /**
  * Prints the given {@link data} at the console.
  */

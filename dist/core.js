@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.pair = exports.println = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.ifNull = exports.ifNotNull = exports.error = exports.checkNotNull = void 0;
+exports.triple = exports.TODO = exports.repeatUpTo = exports.repeatDownTo = exports.repeat = exports.pair = exports.println = exports.objectPool = exports.newLine = exports.measureTimeMillis = exports.lazy = exports.ifNull = exports.ifNotNull = exports.error = exports.checkNotNull = void 0;
 var Exceptions_1 = require("./Exceptions");
 var Lazy_1 = require("./Lazy");
+var ObjectPool_1 = require("./ObjectPool");
 var Pair_1 = require("./Pair");
 var Triple_1 = require("./Triple");
 /**
@@ -50,7 +51,6 @@ var ifNull = function (value, block) {
 exports.ifNull = ifNull;
 /**
  * Provides an instance of type {@link ILazy}, to lazy load a value of type {@link T}, which is useful especially for loading memory and CPU intensive values only on demand.
- *
  * The value is provided via function {@link initializer}.
  */
 var lazy = function (initializer) {
@@ -74,6 +74,14 @@ var newLine = function () {
     (0, exports.println)("");
 };
 exports.newLine = newLine;
+/**
+ * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*. It keeps objects which are expensive to create in memory to be reused.
+ * The parameter *{@link capacity}* defines the maximum number of instances which are created via function *{@link creator}*.
+ */
+var objectPool = function (capacity, creator) {
+    return new ObjectPool_1.ObjectPool(capacity, creator);
+};
+exports.objectPool = objectPool;
 /**
  * Prints the given {@link data} at the console.
  */
