@@ -18,6 +18,13 @@ export class IllegalArgumentException extends Error {}
 export class IllegalStateException extends Error {}
 
 /**
+ * An exception that occurs when a method is invalid for the current object state.
+ *
+ * E.g. Fetching an object from an object pool whose capacity is already exhausted.
+ */
+export class InvalidOperationException extends Error {}
+
+/**
  * An exception that occurs when an expected result is not available.
  *
  * E.g. if a search for a specific value ends without result.

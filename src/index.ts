@@ -6,6 +6,7 @@ export {
   lazy,
   measureTimeMillis,
   newLine,
+  objectPool,
   pair,
   println,
   repeat,
@@ -18,11 +19,13 @@ export {
   ClassCastException,
   IllegalArgumentException,
   IllegalStateException,
+  InvalidOperationException,
   NoSuchElementException,
   NotImplementedException,
   NotSupportedException,
   NullPointerException,
 } from "./Exceptions";
 export { ILazy } from "./ILazy";
+export { IObjectPool } from "./IObjectPool";
 export { Pair } from "./Pair";
 export { Triple } from "./Triple";
