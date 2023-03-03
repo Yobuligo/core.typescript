@@ -109,8 +109,12 @@ export const newLine = (): void => {
   println("");
 };
 
+export const objectCache = <K, T extends object>(): IObjectCache<K, T> => {
+  return new ObjectCache();
+};
+
 /**
- * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*. It keeps objects which are expensive to create in memory to be reused.
+ * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*. It creates and stores objects which are expensive to create in memory to be reused.
  * The parameter *{@link capacity}* defines the maximum number of instances which are created via function *{@link creator}*.
  */
 export const objectPool = <T extends object>(
@@ -118,10 +122,6 @@ export const objectPool = <T extends object>(
   creator: (index: number) => T
 ): IObjectPool<T> => {
   return new ObjectPool(capacity, creator);
-};
-
-export const objectCache = <K, T extends object>(): IObjectCache<K, T> => {
-  return new ObjectCache();
 };
 
 /**

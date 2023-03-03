@@ -5,7 +5,7 @@ import {
 
 /**
  * An implementation of this interface represents an object pool.
- * It keeps objects which are expensive to create in memory to be reused.
+ * It creates and stores objects which are expensive to create in memory to be reused.
  */
 export interface IObjectPool<T extends object> {
   /**

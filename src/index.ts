@@ -6,6 +6,7 @@ export {
   lazy,
   measureTimeMillis,
   newLine,
+  objectCache,
   objectPool,
   pair,
   println,
@@ -26,6 +27,7 @@ export {
   NullPointerException,
 } from "./Exceptions";
 export { ILazy } from "./ILazy";
+export { IObjectCache } from "./IObjectCache";
 export { IObjectPool } from "./IObjectPool";
 export { Pair } from "./Pair";
 export { Triple } from "./Triple";

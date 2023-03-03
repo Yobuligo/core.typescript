@@ -5,28 +5,48 @@ import { IObjectCacheElement } from "./IObjectCacheElement";
 export class ObjectCache<K, T extends object> implements IObjectCache<K, T> {
   private cache: Map<K, IObjectCacheElement<T>> = new Map();
 
-  add(key: K, object: T, expiresIn: number = 0): void {
-    const timerId = this.setTimer(key, expiresIn);
-    this.cache.set(key, { object, expiresIn, timerId });
+  add(key: K, object: T): boolean;
+  add(key: K, object: T, expiresIn: number | undefined): boolean;
+  add(key: K, object: T, expiresIn?: number): boolean {
+    if (this.cache.has(key)) {
+      return false;
+    }
+    this.setCacheValue(key, object, expiresIn);
+    return true;
+  }
+
+  contains(key: K): boolean {
+    return this.cache.has(key);
   }
 
   find(key: K): T | undefined {
     return ifNotNull(this.cache.get(key), (objectCacheElement) => {
-      this.resetTimer(key, objectCacheElement);
       return objectCacheElement.object;
     });
   }
 
   remove(key: K): T | undefined {
     const objectCacheElement = this.cache.get(key);
-    this.cache.delete(key);
-    return objectCacheElement?.object;
+    if (objectCacheElement) {
+      clearTimeout(objectCacheElement.timerId);
+      this.cache.delete(key);
+      return objectCacheElement.object;
+    } else {
+      return undefined;
+    }
   }
 
-  private resetTimer(key: K, objectCacheElement: IObjectCacheElement<T>) {
-    clearTimeout(objectCacheElement.timerId);
-    const timerId = this.setTimer(key, objectCacheElement.expiresIn);
-    objectCacheElement.timerId = timerId;
+  set(key: K, object: T): void;
+  set(key: K, object: T, expiresIn: number): void;
+  set(key: K, object: T, expiresIn?: number): void {
+    this.remove(key);
+    this.setCacheValue(key, object, expiresIn);
+  }
+
+  private setCacheValue(key: K, object: T, expiresIn?: number) {
+    let expiresInValue = expiresIn ?? 0;
+    const timerId = this.setTimer(key, expiresInValue);
+    this.cache.set(key, { object, expiresIn: expiresInValue, timerId });
   }
 
   private setTimer(key: K, expiresIn: number) {
