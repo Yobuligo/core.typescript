@@ -3,7 +3,7 @@ import { objectPool } from "./../src/core";
 import { IObjectPool } from "./../src/IObjectPool";
 
 class Test {
-  hash = new Date().getTime();
+  id = new Date().getTime();
 }
 
 describe("objectPool", () => {
