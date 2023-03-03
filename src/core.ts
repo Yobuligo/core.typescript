@@ -4,8 +4,10 @@ import {
   NotImplementedException,
 } from "./Exceptions";
 import { ILazy } from "./ILazy";
+import { IObjectCache } from "./IObjectCache";
 import { IObjectPool } from "./IObjectPool";
 import { Lazy } from "./Lazy";
+import { ObjectCache } from "./ObjectCache";
 import { ObjectPool } from "./ObjectPool";
 import { Pair } from "./Pair";
 import { Triple } from "./Triple";
@@ -116,6 +118,10 @@ export const objectPool = <T extends object>(
   creator: (index: number) => T
 ): IObjectPool<T> => {
   return new ObjectPool(capacity, creator);
+};
+
+export const objectCache = <K, T extends object>(): IObjectCache<K, T> => {
+  return new ObjectCache();
 };
 
 /**
