@@ -109,12 +109,18 @@ export const newLine = (): void => {
   println("");
 };
 
+/**
+ * Provides an instance of an object cache *{@link IObjectCache}* for objects of type *{@link T}*.  
+ * It stores objects by key of type *{@link K}*, which needs to be retrieved afterwards.
+ * It provides the possibility to set an expiration time, when adding or setting an object, to cleanup the cache in time if required.
+ */
 export const objectCache = <K, T extends object>(): IObjectCache<K, T> => {
   return new ObjectCache();
 };
 
 /**
- * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*. It creates and stores objects which are expensive to create in memory to be reused.
+ * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*.  
+ * It creates and stores objects which are expensive to create in memory to be reused.
  * The parameter *{@link capacity}* defines the maximum number of instances which are created via function *{@link creator}*.
  */
 export const objectPool = <T extends object>(
