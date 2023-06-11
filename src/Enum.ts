@@ -15,10 +15,6 @@ export class EnumDefault implements IEnum {
     );
   }
 
-  firstKeyOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
-    return this.keys(enumType)[0] ?? undefined;
-  }
-
   firstKey<T extends EnumType>(enumType: T): T[keyof T] {
     return (
       this.firstKeyOrNull(enumType) ??
@@ -28,6 +24,10 @@ export class EnumDefault implements IEnum {
         )
       )
     );
+  }
+
+  firstKeyOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
+    return this.keys(enumType)[0] ?? undefined;
   }
 
   firstOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
