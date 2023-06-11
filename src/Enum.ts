@@ -3,13 +3,13 @@ import { NoSuchElementException } from "./Exceptions";
 import { IEnum } from "./IEnum";
 import { error } from "./core";
 
-class EnumDefault implements IEnum {
+export class EnumDefault implements IEnum {
   firstKey<T extends EnumType>(enumType: T): T[keyof T] {
     return (
       this.firstKeyOrNull(enumType) ??
       error(
         new NoSuchElementException(
-          `Error when getting first key from Enum. Enum has no keys. Use function 'firstKeyOrNull' instead.`
+          `Error when getting first key from Enum. Enum has no entries. Use function 'firstKeyOrNull' instead.`
         )
       )
     );
@@ -24,7 +24,7 @@ class EnumDefault implements IEnum {
       this.firstValueOrNull(enumType) ??
       error(
         new NoSuchElementException(
-          `Error when getting first value from Enum. Enum has no values. Use function 'firstValueOrNull' instead.`
+          `Error when getting first value from Enum. Enum has no entries. Use function 'firstValueOrNull' instead.`
         )
       )
     );
@@ -48,5 +48,3 @@ class EnumDefault implements IEnum {
     return this.keys(enumType).map((key) => enumType[key]) as T[keyof T][];
   }
 }
-
-export const Enum = new EnumDefault();

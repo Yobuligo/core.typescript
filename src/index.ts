@@ -1,4 +1,22 @@
 export {
+  ClassCastException,
+  IllegalArgumentException,
+  IllegalStateException,
+  InvalidOperationException,
+  NoSuchElementException,
+  NotImplementedException,
+  NotSupportedException,
+  NullPointerException,
+} from "./Exceptions";
+export { IEnum } from "./IEnum";
+export { ILazy } from "./ILazy";
+export { IObjectCache } from "./IObjectCache";
+export { IObjectPool } from "./IObjectPool";
+export { Pair } from "./Pair";
+export { Triple } from "./Triple";
+export {
+  Enum,
+  TODO,
   checkNotNull,
   error,
   ifNotNull,
@@ -13,21 +31,5 @@ export {
   repeat,
   repeatDownTo,
   repeatUpTo,
-  TODO,
   triple,
 } from "./core";
-export {
-  ClassCastException,
-  IllegalArgumentException,
-  IllegalStateException,
-  InvalidOperationException,
-  NoSuchElementException,
-  NotImplementedException,
-  NotSupportedException,
-  NullPointerException,
-} from "./Exceptions";
-export { ILazy } from "./ILazy";
-export { IObjectCache } from "./IObjectCache";
-export { IObjectPool } from "./IObjectPool";
-export { Pair } from "./Pair";
-export { Triple } from "./Triple";

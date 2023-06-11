@@ -1,8 +1,10 @@
+import { EnumDefault } from "./Enum";
 import {
   IllegalArgumentException,
   IllegalStateException,
   NotImplementedException,
 } from "./Exceptions";
+import { IEnum } from "./IEnum";
 import { ILazy } from "./ILazy";
 import { IObjectCache } from "./IObjectCache";
 import { IObjectPool } from "./IObjectPool";
@@ -24,6 +26,11 @@ export const checkNotNull = <T>(
 ): T => {
   return value ?? error(new IllegalStateException(message));
 };
+
+/**
+ * Provides access to reflection functions for enums.
+ */
+export const Enum: IEnum = new EnumDefault();
 
 /**
  * Throws an error and returns never. With parameter {@link message} a text can be passed in.
@@ -110,7 +117,7 @@ export const newLine = (): void => {
 };
 
 /**
- * Provides an instance of an object cache *{@link IObjectCache}* for objects of type *{@link T}*.  
+ * Provides an instance of an object cache *{@link IObjectCache}* for objects of type *{@link T}*.
  * It stores objects by key of type *{@link K}*, which needs to be retrieved afterwards.
  * It provides the possibility to set an expiration time, when adding or setting an object, to cleanup the cache in time if required.
  */
@@ -119,7 +126,7 @@ export const objectCache = <K, T extends object>(): IObjectCache<K, T> => {
 };
 
 /**
- * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*.  
+ * Provides an instance of an object pool *{@link IObjectPool}* for objects of type *{@link T}*.
  * It creates and stores objects which are expensive to create in memory to be reused.
  * The parameter *{@link capacity}* defines the maximum number of instances which are created via function *{@link creator}*.
  */
