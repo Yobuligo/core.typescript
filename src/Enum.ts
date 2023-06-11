@@ -4,6 +4,21 @@ import { IEnum } from "./IEnum";
 import { error } from "./core";
 
 export class EnumDefault implements IEnum {
+  first<T extends EnumType>(enumType: T): T[keyof T] {
+    return (
+      this.firstOrNull(enumType) ??
+      error(
+        new NoSuchElementException(
+          `Error when getting first value from Enum. Enum has no entries. Use function 'firstOrNull' instead.`
+        )
+      )
+    );
+  }
+
+  firstKeyOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
+    return this.keys(enumType)[0] ?? undefined;
+  }
+
   firstKey<T extends EnumType>(enumType: T): T[keyof T] {
     return (
       this.firstKeyOrNull(enumType) ??
@@ -15,22 +30,7 @@ export class EnumDefault implements IEnum {
     );
   }
 
-  firstKeyOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
-    return this.keys(enumType)[0] ?? undefined;
-  }
-
-  firstValue<T extends EnumType>(enumType: T): T[keyof T] {
-    return (
-      this.firstValueOrNull(enumType) ??
-      error(
-        new NoSuchElementException(
-          `Error when getting first value from Enum. Enum has no entries. Use function 'firstValueOrNull' instead.`
-        )
-      )
-    );
-  }
-
-  firstValueOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
+  firstOrNull<T extends EnumType>(enumType: T): T[keyof T] | undefined {
     return this.values(enumType)[0] ?? undefined;
   }
 
