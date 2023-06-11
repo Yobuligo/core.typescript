@@ -38,7 +38,7 @@ export class EnumDefault implements IEnum {
     const keys: T[keyof T][] = [];
     for (const value in enumType) {
       if (!parseInt(value) && value !== "0") {
-        keys.push(value as unknown as T[keyof T]);
+        keys.push(value as T[keyof T]);
       }
     }
     return keys;
