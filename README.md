@@ -34,6 +34,11 @@ The following example shows how to
 3. getting the first value for comparison reasons
 
 ```
+enum Gender {
+  MALE = "male",
+  FEMALE = "female",
+}
+
 const keys = Enum.keys(Gender);             // result: MALE, FEMALE
 const values = Enum.values(Gender);         // result: male, female
 if (Enum.first(Gender) === Gender.MALE) {   // returns true
