@@ -25,6 +25,22 @@ To provide an alternative text to the exception, parameter _message_ can be pass
 function checkNotNull<T>(value?: T, message: string = "Parameter 'value' must be not null and not undefined"): T
 ```
 
+### Enum
+Provides access to reflection functions for enums.
+The following example shows how to 
+
+1. get the keys of an Enum
+2. get the values of an Enum
+3. getting the first value for comparison reasons
+
+```
+const keys = Enum.keys(Gender);             // result: MALE, FEMALE
+const values = Enum.values(Gender);         // result: male, female
+if (Enum.first(Gender) === Gender.MALE) {   // returns true
+  console.log("First entry is MALE");
+}
+```
+
 ### error
 
 Throws an error and returns never. With parameter _message_ a text can be passed in.
@@ -122,22 +138,6 @@ const second = dbConnectionPool.acquire();
 
 // ...
 dbConnectionPool.release(first);
-```
-
-### Enum
-Provides access to reflection functions for enums.
-The following example shows how to 
-
-1. get the keys of an Enum
-2. get the values of an Enum
-3. getting the first value for comparison reasons
-
-```
-const keys = Enum.keys(Gender);             // result: MALE, FEMALE
-const values = Enum.values(Gender);         // result: male, female
-if (Enum.first(Gender) === Gender.MALE) {   // returns true
-  console.log("First entry is MALE");
-}
 ```
 
 ### println
