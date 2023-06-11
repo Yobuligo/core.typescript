@@ -1,3 +1,4 @@
+export { EnumType } from "./EnumType";
 export {
   ClassCastException,
   IllegalArgumentException,
